@@ -1,34 +1,31 @@
-import React, { Component } from 'react';
-import 'bootstrap/dist/css/bootstrap.css'; 
+import React, { Component } from "react";
+import "bootstrap/dist/css/bootstrap.css";
 
 class Counter extends Component {
+  state = {
+    count: 0,
+  };
 
-state = {
-        count : 0
-    }
-
-
-handleIncrement = () => {
+  handleIncrement = (product) => {
+    console.log(product);
     this.setState({
-      count : this.state.count + 1
-    })
-}
+      count: this.state.count + 1,
+    });
+  };
 
-getCounter(){
+  getCounter() {
     return this.state.count === 0 ? "Zero" : this.state.count;
-}
+  }
 
-
-
-render() {
+  render() {
     return (
       <div>
-
-        <span className='badge badge-primary m-3'>{this.getCounter()}</span>
-        <button onClick={this.handleIncrement}>increment</button>
-
-        </div>
-    )
+        <span className="badge badge-primary m-3">{this.getCounter()}</span>
+        <button onClick={() => this.handleIncrement({ id: 1 })}>
+          increment
+        </button>
+      </div>
+    );
   }
 }
 
