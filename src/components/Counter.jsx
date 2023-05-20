@@ -3,24 +3,30 @@ import 'bootstrap/dist/css/bootstrap.css';
 
 class Counter extends Component {
 
-    state = {
-        count : 0,
-        tags : ['tag1','tag2','tag3']
+state = {
+        count : 0
     }
 
 
+handleIncrement = () => {
+    this.setState({
+      count : this.state.count + 1
+    })
+}
 
-    renderTags(){
-        if(this.state.tags.length === 0) return <p>There is no tags!</p>
-        return <ul>{this.state.tags.map(tag => <li key={tag}>{tag}</li>)}</ul>    
-    }
+getCounter(){
+    return this.state.count === 0 ? "Zero" : this.state.count;
+}
+
 
 
 render() {
     return (
       <div>
-        {this.state.tags.length === 0 && "please add some tags"}
-        {this.renderTags()}
+
+        <span className='badge badge-primary m-3'>{this.getCounter()}</span>
+        <button onClick={this.handleIncrement}>increment</button>
+
         </div>
     )
   }
